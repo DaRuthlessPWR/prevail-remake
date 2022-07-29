@@ -1,4 +1,4 @@
--- Prevail X ~02hacks
+-- Prevail X ~PWR
 
 Prevail = {
 	dev = "PWR",
@@ -51,20 +51,20 @@ if _G.PrevailX.Loaded then
 end
 
 if typeof(loadstring) == "function" then
-	get = loadstring(game:HttpGet("https://pastebin.com/raw/epCT49yq", true))()
+	get = loadstring(game:HttpGet("https://pastebin.com/7NWnwpfU", true))()
 	Disc, DiscServ, titleBar, Pulldownmenu = get["g"], get["b"], get["c"], get["e"]
 end
 if not Disc then
-	Disc = "02hacks#2393"
+	Disc = "rchiller#7030"
 end
 if not DiscServ then
-	DiscServ = "discord.gg/EBTjwJy9kq"
+	DiscServ = "https://discord.gg/xakvwxefUq"
 end
 if not titleBar then
-	titleBar = "02hacks Prevail X"
+	titleBar = "PWR HUB"
 end
 if not Pulldownmenu then
-	Pulldownmenu = "Prevail X, where small details do matter."
+	Pulldownmenu = "PWR HUB,  We always Shock u."
 end
 
 _G.PrevailX.Loaded = true
