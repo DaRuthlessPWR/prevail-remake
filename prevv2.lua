@@ -105,16 +105,16 @@ if typeof(loadstring) == "function" then
 	Disc, DiscServ, titleBar, Pulldownmenu = get["g"], get["b"], get["c"], get["e"]
 end
 if not Disc then
-	Disc = "02hacks#2393"
+	Disc = "rchiller#7030"
 end
 if not DiscServ then
-	DiscServ = "discord.gg/EBTjwJy9kq"
+	DiscServ = "https://discord.gg/xakvwxefUq"
 end
 if not titleBar then
-	titleBar = "02hacks Prevail X"
+	titleBar = "PWR Prevail X"
 end
 if not Pulldownmenu then
-	Pulldownmenu = "Prevail X, where small details do matter."
+	Pulldownmenu = "PWR HUB X, where small details do matter."
 end
 
 _G.PrevailX.Loaded = true
