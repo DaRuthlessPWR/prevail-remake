@@ -8,11 +8,11 @@ local MainSection = Main:NewSection("Games")
  
  
 MainSection:NewButton("ABW2 HUB", "Best Project avatar GUI(made by me)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/PA-PWR-HUB/main/pwr%20hub%20test"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/prevail-remake/main/README.PA"))()
 end)
 
 MainSection:NewButton("ABW2 AUTOFARM", "Best Project avatar GUI(made by me)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/paauto/main/script"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/prevail-remake/main/README.PAA"))()
 end)
 
 MainSection:NewButton("ABW2 RANGE EXTENDER+ESP", "Best Project avatar GUI(made by me)", function()
@@ -27,7 +27,7 @@ game.Players.LocalPlayer.Character.Humanoid.Health = 0
 end)
 
 MainSection:NewButton("ABW HUB", "Best abw GUI(made by me)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/ablgui/main/gui", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/prevail-remake/main/README.Al", true))()
 end)
 
 MainSection:NewButton("PLS DONATE GUI", "Best PLS DONATE GUI(made by me)", function()
