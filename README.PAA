@@ -1,0 +1,342 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Windowasd = Library.CreateLib("Project Avatar", "DarkTheme")
+
+local Windowasdd = Windowasd:NewTab("Main")
+
+local Window = Windowasdd:NewSection("Main")
+
+local TPWINDOWD = Windowasd:NewTab("Teleports")
+
+local TPWINDOW = TPWINDOWD:NewSection("Main")
+
+local TweenService  = game:GetService("TweenService")
+    local noclipE       = false
+    local antifall      = false
+    
+    local function noclip()
+        for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+            if v:IsA("BasePart") and v.CanCollide == true then
+                v.CanCollide = false
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+            end
+        end
+    end
+    
+    local function moveto(obj, speed)
+        local info = TweenInfo.new(((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - obj.Position).Magnitude)/ speed,Enum.EasingStyle.Linear)
+        local tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, info, {CFrame = obj})
+    
+        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("ouw") then
+            antifall = Instance.new("Part", game.Players.LocalPlayer.Character.HumanoidRootPart)
+            antifall.Name = "ouw"
+            noclipE = game:GetService("RunService").Stepped:Connect(noclip)
+            tween:Play()
+            shid = tween
+        end
+            
+        tween.Completed:Connect(function()
+            antifall:Destroy()
+            noclipE:Disconnect()
+        end)
+    end
+    
+    plr = game.Players.LocalPlayer
+    function tp(place)
+        plr.Character.HumanoidRootPart.CFrame = place
+    end
+    
+    Settings = {}
+    
+    local Locations = {
+        ['Deliver the item to Water City'] = CFrame.new(-1809, 271, 3006),
+        ['Deliver the item to Ice Village'] = CFrame.new(-2904, 224, 2018),
+        ['Deliver the item to Pebble Village'] = CFrame.new(785, -22, 301),
+        ['Deliver the item to Grand Temple of Air'] = CFrame.new(-4854, 270, 632),
+        ['Deliver the item to Shang Sen Sei'] = CFrame.new(-23, -40, -866),
+        ['Deliver the item to Flame City'] = CFrame.new(-1830, -20, -1861)
+    }
+    
+    
+    
+    function getQuest()
+        if plr.PlayerGui:FindFirstChild("Quest") then
+            return plr.PlayerGui.Quest.WhereTo.Text
+        end
+    end
+    
+    function getClosestQuestBoard()
+        local dist, board = math.huge
+        for i,v in next, game:GetService("Workspace").QuestBoards:GetDescendants() do
+            if v.Parent.Name == '18+' and v.Name == 'Meshes/Mission board_Cube.002' then
+                local mag = (plr.Character.HumanoidRootPart.Position - v.Position).magnitude
+                if dist > mag then
+                    dist = mag
+                    board = v
+                end
+            end 
+        end
+        return board
+    end
+    
+    Window:NewToggle("Quest Farm", "toggle", function(a)
+        Settings['QuestFarm'] = a
+        while Settings.QuestFarm do wait()
+            if plr.PlayerGui:FindFirstChild("Quest") then
+                if plr.PlayerGui.Quest:FindFirstChild("WhereTo") then
+                    moveto(Locations[getQuest()],Settings.TweenSpeed or 500)
+                elseif plr.PlayerGui.Quest:FindFirstChild("WhatToKill") then
+                    local button = plr.PlayerGui.Quest.Quit
+                    mousemoveabs(button.AbsolutePosition.X + button.AbsoluteSize.X / 2, button.AbsolutePosition.Y + 0.039)
+                    mousemoveabs(button.AbsolutePosition.X + button.AbsoluteSize.X / 2, button.AbsolutePosition.Y + 0.396)
+                    wait(0.1)
+                    mouse1click()
+                end
+            else
+                moveto(getClosestQuestBoard().CFrame * CFrame.new(0,0,8),Settings.TweenSpeed or 500)
+                fireclickdetector(getClosestQuestBoard().ClickDetector)
+            end
+        end
+        if shid then
+            shid:Cancel()
+        end
+        for i,v in next, plr.Character:GetChildren() do
+            if v:IsA"BasePart" then
+                v.CanCollide = false
+            end
+        end
+    end)
+    
+    Window:NewSlider("Tween Speed", "slider", 1000,10, function(a)
+        Settings['TweenSpeed'] = a
+    end)
+    
+    Window:NewButton("Remove DOF", "button",  function()
+        game:GetService("Lighting").DepthOfField:Destroy()
+    end)
+    
+    Window:NewToggle("Spam Heavy Attack", "toggle", function(a)
+        Settings['Heavy'] = a
+        while Settings.Heavy do wait()
+            game:GetService("Players").LocalPlayer.Character.Handler.HeavyAttack:FireServer('SecretCode')
+        end
+    end)
+    
+    Window:NewToggle("Spam Light Attack", "toggle",  function(a)
+        Settings['Light'] = a
+        while Settings.Light do wait()
+            game:GetService("Players").LocalPlayer.Character.Handler.LightAttack:FireServer('SecretCode')
+        end
+    end)
+    
+    Window:NewToggle("Fly (double tap space)", "toggle", function(a)
+        Settings['Fly'] = a
+            if not bind then loadstring(game:HttpGet'https://ic3w0lf.xyz/cloud/t/ABBVe6rcECIP1Aw04mm')(); end
+            if not input then loadstring(game:HttpGet'https://ic3w0lf.xyz/cloud/t/FKyC0IcUfeS1TR')(); end
+                
+            local player = game:GetService'Players'.LocalPlayer;
+            local mouse = player:GetMouse();
+            local camera = workspace.CurrentCamera;
+            local runservice = game:GetService'RunService';
+            local uis = game:GetService'UserInputService';
+        
+            local fly = Settings.Fly
+            local flySpeed = Settings.FlySpeed
+            local maxSpeed = 1010;
+            local disp;
+        
+            local gayGames = {
+                3016661674; -- rogue lineage checks falling humanoid state lmao
+            };
+        
+            for i, v in ipairs(gayGames) do
+                gayGames[v] = true;
+                gayGames[i] = false;
+            end
+        
+            local gay = gayGames[game.PlaceId];
+        
+            shared.sfls = script;
+        
+            if Drawing then
+                disp = shared.fdisp or Drawing.new'Text';
+                disp.Text = 'FlySpeed: ' .. flySpeed;
+                disp.Size = 18;
+                disp.Center = false;
+                disp.Outline = true;
+                disp.Visible = true;
+                disp.Color = Color3.new(1, 1, 1);
+                disp.Position = Vector2.new(150, 7);
+        
+                shared.fdisp = disp;
+            end
+        
+            function IsInZone(Object1, Object2, YCheck) -- broken 2 lazy 2 fix
+                if (typeof(Object1) ~= 'Instance' and typeof(Object1) ~= 'table') or (typeof(Object2) ~= 'Instance' and typeof(Object2) ~= 'table') then return 'NIGGER'; end
+                if YCheck ~= nil and typeof(YCheck) ~= 'boolean' then return end
+        
+                YCheck = (YCheck ~= nil and YCheck or false);
+        
+                local RYCheck = true;
+        
+                local Object = Object1;
+                
+                local Positive = (Object2.CFrame * CFrame.new(Object2.Size.X / 2, Object2.Size.Y / 2, Object2.Size.Z / 2));
+                local Negative = (Object2.CFrame * CFrame.new(-Object2.Size.X / 2, -Object2.Size.Y / 2, -Object2.Size.Z / 2));
+        
+                if YCheck then
+                    RYCheck = (YCheck == true and
+                        (Object.Position.Y > Positive.Y) and
+                        (Object.Position.Y < Negative.Y));
+                end
+        
+                -- print(1, (Object.Position.X < Positive.X), Object.Position.X, Positive.X)
+                -- print(2, (Object.Position.X > Negative.X), Object.Position.X, Negative.X)
+                -- print(3, (Object.Position.Z > Positive.Z), Object.Position.Z, Positive.Z)
+                -- print(4, (Object.Position.Z < Negative.Z), Object.Position.Z, Negative.Z)
+                -- print(5, RYCheck);
+        
+                return (Object.Position.X < Positive.X) and
+                    (Object.Position.X > Negative.X) and
+                    (Object.Position.Z > Positive.Z) and
+                    (Object.Position.Z < Negative.Z) and
+                    (RYCheck);
+            end
+        
+            function GetIndex(Table, Value)
+                for i, v in pairs(Table) do
+                    if v == Value then
+                        return i;
+                    end
+                end
+        
+                return -1;
+            end
+        
+            local PartIgnore = {};
+        
+            function DisableClip(Part)
+                if Part:IsA'BasePart' and Part.CanCollide then
+                    local Start = tick();
+                    local OldTransparency = Part.Transparency;
+                    
+                    table.insert(PartIgnore, Part);
+        
+                    while tick() - Start < 300 and player.Character and player.Character:FindFirstChild'HumanoidRootPart' and not input.down.f4 do
+                        if tick() - Start > 1 and not IsInZone(player.Character.HumanoidRootPart, Part, true) and not IsInZone({Position = camera.CFrame.p}, Part, true) then
+                            break;
+                        end
+        
+                        Part.CanCollide = false;
+                        if not gay then Part.Transparency = 0.75; end
+        
+                        wait(1 / 8);
+                    end
+        
+                    table.remove(PartIgnore, GetIndex(PartIgnore, Part));
+        
+                    Part.Transparency = OldTransparency;
+                    Part.CanCollide = true;
+                end
+            end
+        
+            local lastDC = 0;
+        
+            uis.InputChanged:Connect(function(Input)
+                if script ~= shared.sfls then return; end
+        
+                if Input.UserInputType == Enum.UserInputType.MouseWheel then
+                    if input.down.leftcontrol then
+                        local inc = Input.Position.Z > 0 and 25 or -25;
+        
+                        flySpeed = math.clamp(flySpeed + (inc * (input.down.leftshift and 2 or 1)), 0, maxSpeed);
+                        lastDC = tick();
+                    end
+                end
+        
+                if disp then -- too lazy to make a loop or some bullshit to update this text so i just made it update .
+                    disp.Text = 'FlySpeed: ' .. flySpeed;
+                    disp.Position = Vector2.new(150, tick() - lastDC < 5 and 7 or -100);
+                end
+            end);
+        
+            bind('f', function()
+                if input.down.leftcontrol then
+                    fly = not fly;
+                end
+            end)
+        
+            local lastSpace = 0;
+        
+            bind_first('space', function()
+                if fly and tick() - lastSpace < 0.3 and player.Character and player.Character:FindFirstChild'HumanoidRootPart' and player.Character:FindFirstChildOfClass'Humanoid' then
+                    local root = player.Character.HumanoidRootPart;
+                    local hum = player.Character:FindFirstChildOfClass'Humanoid';
+                    
+                    while input.down.space and fly do
+                        if not gay then hum.PlatformStand = true; end
+                        local start = mouse.Hit.p;
+                        local dir = (start - camera.CFrame.p);
+        
+                        root.Velocity = dir.unit * (math.random((flySpeed - 1) * 1000, (flySpeed + 2.5) * 1000) / 1000); -- News random speed so the velocity doesn't always measure to a certain amount (prevents detection)
+        
+                        local ray = Ray.new(root.Position, dir.unit * 50);
+                        local hit, pos = workspace:FindPartOnRayWithIgnoreList(ray, {player.Character, camera, unpack(PartIgnore)});
+        
+                        if hit and input.down.leftshift then
+                            spawn(function() DisableClip(hit); end);
+                        end
+        
+                        runservice.RenderStepped:wait();
+                    end
+                    
+                    if not gay then
+                        hum.PlatformStand = false;
+                        root.Velocity = Vector3.new();
+                        hum:SetStateEnabled(0, false);
+                    end
+                end
+        
+                lastSpace = tick();
+            end)
+    end)
+    
+    Window:NewSlider("Fly Speed", "slider", 100, 0, function(a)
+        Settings['FlySpeed'] = a
+    end)
+
+Window:NewButton("No Camera Shake", "button",  function()
+    local storage = game:GetService("ReplicatedStorage")
+    local shaker = require(storage.CameraShaker)
+    shaker.Update = function()
+        return wait(9e9)
+    end
+end)
+
+TPWINDOW:NewButton("Southern Water Tribe", "button",  function()
+    moveto(CFrame.new(-1809, 340, 3006),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Ice Village", "button",  function()
+    moveto(CFrame.new(-2904, 290, 2018),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Pebble Village", "button",  function()
+    moveto(CFrame.new(785, 45, 361),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Southern Air Temple", "button",  function()
+    moveto(CFrame.new(-4854, 340, 632),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Earth Kingdom", "button",  function()
+    moveto(CFrame.new(-23, 75, -866),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Fire Nation", "button",  function()
+    moveto(CFrame.new(-1830, 80, -1861),Settings.TweenSpeed)
+end)
+
+TPWINDOW:NewButton("Pro Bending", "button",  function()
+    moveto(CFrame.new(-756, 132, -420),Settings.TweenSpeed)
+end)
