@@ -26,6 +26,13 @@ game.Players.LocalPlayer.Character.Humanoid.Health = 0
 -- reset when the leaderboard disappears
 end)
 
+MainSection:NewButton("ABL BLUE FIRE", "Unlock all characters", function()
+   game.Players.LocalPlayer.UserId = 545611
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+
+-- reset when the leaderboard disappears
+end)
+
 MainSection:NewButton("ABW HUB", "Best abw GUI(made by me)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/prevail-remake/main/README.Al", true))()
 end)
