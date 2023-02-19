@@ -33,6 +33,20 @@ game.Players.LocalPlayer.Character.Humanoid.Health = 0
 -- reset when the leaderboard disappears
 end)
 
+MainSection:NewButton("Chi", "Unlock all characters", function()
+   game.Players.LocalPlayer.UserId = 3719122504
+game.Players.LocalPlayer.Chi.Value = 10000
+
+-- reset when the leaderboard disappears
+end)
+
+MainSection:NewButton("ABL Panel", "Unlock all characters", function()
+   game.Players.LocalPlayer.UserId = 3719122504
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+
+-- reset when the leaderboard disappears
+end)
+
 MainSection:NewButton("ABW HUB", "Best abw GUI(made by me)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/DaRuthlessPWR/prevail-remake/main/README.Al", true))()
 end)
