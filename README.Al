@@ -27,6 +27,14 @@ MainSection:NewButton("Luana (QUEST3)", "TP Lost Girl", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-413.0880126953125, 149.45716857910156, 958.1792602539062))
 end)
 
+MainSection:NewButton("TP POLICE CHIEF (QUEST4)", "TP Raquel", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1316.66796875, 232.58050537109375, 844.5130004882812))
+end)
+
+MainSection:NewButton("Trayvon (QUEST4)", "TP Raquel", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-9507.8271484375, 153.02024841308594, 25785.404296875))
+end)
+
 MainSection:NewButton("Raquel (QUEST3)", "TP Raquel", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1214.37451171875, 258.3157653808594, -1758.617919921875))
 end)
