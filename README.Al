@@ -32,7 +32,7 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1316.66796875, 232.580505
 end)
 
 MainSection:NewButton("Trayvon (QUEST4)", "TP Raquel", function()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-9507.8271484375, 153.02024841308594, 25785.404296875))
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-7921, 164, 12631))
 end)
 
 MainSection:NewButton("Raquel (QUEST3)", "TP Raquel", function()
