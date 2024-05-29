@@ -41,7 +41,7 @@ game.Players.LocalPlayer.Chi.Value = 10000
 end)
 
 MainSection:NewButton("ABL Panel", "Unlock all characters", function()
-   game.Players.LocalPlayer.UserId = 3719122504
+   game.Players.LocalPlayer.UserId = 91686210
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
 
 -- reset when the leaderboard disappears
