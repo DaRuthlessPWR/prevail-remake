@@ -28,11 +28,11 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-413.0880126953125, 149.45
 end)
 
 MainSection:NewButton("TP POLICE CHIEF (QUEST4)", "TP Raquel", function()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1316.66796875, 232.58050537109375, 844.5130004882812))
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1319.8646240234375, 231.9901885986328, 845.4302978515625))
 end)
 
 MainSection:NewButton("Trayvon (QUEST4)", "TP Raquel", function()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-7921, 164, 12631))
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6307.095703125, 139.1509552001953, 199.4363250732422))
 end)
 
 MainSection:NewButton("Raquel (QUEST3)", "TP Raquel", function()
